@@ -91,13 +91,13 @@
 
 ### 1. Install Dependencies  
 ```bash
-pip install -r requirements.txt
+pip3 install -r requirements.txt
 ````
 
 ### 2. Start the API Server
 
 ```bash
-python eboli.py
+python3 eboli.py
 ```
 
 Server listens on port `5000`, ready to accept JSON POST requests at `/check`.
