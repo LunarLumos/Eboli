@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aifee Aadil | Lunar Lumos - Security Engineer</title>
+  <meta name="description" content="Security Engineer passionate about network security and AI. Perl, Bash, Python, C expert.">
+  <style>
+    :root {
+      --matrix-green: #0aff0a;
+      --dark-bg: #0a0a0a;
+      --terminal-text: #e0e0e0;
+      --accent-purple: #9d00ff;
+      --accent-blue: #00a8ff;
+    }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Courier New', monospace;
+    }
+    body {
+      background-color: var(--dark-bg);
+      color: var(--terminal-text);
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+    .matrix-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      opacity: 0.1;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 0;
+      border-bottom: 1px dashed var(--matrix-green);
+    }
+    .logo {
+      color: var(--matrix-green);
+      font-weight: bold;
+      font-size: 1.5rem;
+      text-shadow: 0 0 5px var(--matrix-green);
+    }
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 2rem;
+    }
+    nav a {
+      color: var(--terminal-text);
+      text-decoration: none;
+      position: relative;
+      padding: 0.5rem 0;
+    }
+    nav a:hover {
+      color: var(--matrix-green);
+    }
+    nav a:after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--matrix-green);
+      transition: width 0.3s;
+    }
+    nav a:hover:after {
+      width: 100%;
+    }
+    .hero {
+      height: 80vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+    }
+    .typing {
+      border-right: 3px solid var(--matrix-green);
+      white-space: nowrap;
+      overflow: hidden;
+      font-size: 2rem;
+      color: var(--matrix-green);
+      margin: 1rem 0;
+    }
+    .typing:nth-child(1) {
+      width: 22ch;
+      animation: typing 2s steps(22), blink 0.5s step-end infinite alternate;
+    }
+    .typing:nth-child(2) {
+      width: 30ch;
+      animation: typing 3s steps(30), blink 0.5s step-end infinite alternate;
+      animation-delay: 2s;
+      animation-fill-mode: both;
+    }
+    .typing:nth-child(3) {
+      width: 35ch;
+      animation: typing 4s steps(35), blink 0.5s step-end infinite alternate;
+      animation-delay: 5s;
+      animation-fill-mode: both;
+    }
+    @keyframes typing {
+      from { width: 0 }
+    }
+    @keyframes blink {
+      50% { border-color: transparent }
+    }
+    .btn {
+      background: transparent;
+      color: var(--matrix-green);
+      border: 1px solid var(--matrix-green);
+      padding: 0.8rem 2rem;
+      margin-top: 2rem;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      font-weight: bold;
+    }
+    .btn:hover {
+      box-shadow: 0 0 10px var(--matrix-green);
+    }
+    .btn:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(10, 255, 10, 0.4), transparent);
+      transition: 0.5s;
+    }
+    .btn:hover:before {
+      left: 100%;
+    }
+    section {
+      padding: 4rem 0;
+      border-bottom: 1px dashed var(--matrix-green);
+    }
+    h2 {
+      color: var(--matrix-green);
+      margin-bottom: 2rem;
+      font-size: 2rem;
+      position: relative;
+      display: inline-block;
+    }
+    h2:after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      width: 50%;
+      height: 3px;
+      background: var(--matrix-green);
+    }
+    .about-content {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 3rem;
+    }
+    .profile-img {
+      width: 100%;
+      border-radius: 5px;
+      border: 2px solid var(--matrix-green);
+      box-shadow: 0 0 20px rgba(10, 255, 10, 0.3);
+    }
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      gap: 1.5rem;
+    }
+    .skill-card {
+      background: rgba(20, 20, 20, 0.8);
+      padding: 1.5rem;
+      border-radius: 5px;
+      text-align: center;
+      transition: transform 0.3s;
+      border: 1px solid rgba(10, 255, 10, 0.2);
+    }
+    .skill-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 5px 15px rgba(10, 255, 10, 0.2);
+      border-color: var(--matrix-green);
+    }
+    .skill-card img {
+      width: 50px;
+      height: 50px;
+      margin-bottom: 1rem;
+    }
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+    .project-card {
+      background: rgba(20, 20, 20, 0.8);
+      border-radius: 5px;
+      overflow: hidden;
+      border: 1px solid rgba(10, 255, 10, 0.2);
+      transition: transform 0.3s;
+    }
+    .project-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 5px 15px rgba(10, 255, 10, 0.3);
+      border-color: var(--matrix-green);
+    }
+    .project-img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-bottom: 1px solid var(--matrix-green);
+    }
+    .project-info {
+      padding: 1.5rem;
+    }
+    .project-info h3 {
+      color: var(--matrix-green);
+      margin-bottom: 0.5rem;
+    }
+    .project-links {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+    .project-links a {
+      color: var(--terminal-text);
+      text-decoration: none;
+      font-size: 0.9rem;
+      padding: 0.3rem 0.8rem;
+      border: 1px solid var(--matrix-green);
+      border-radius: 3px;
+      transition: all 0.3s;
+    }
+    .project-links a:hover {
+      background: var(--matrix-green);
+      color: var(--dark-bg);
+    }
+    footer {
+      padding: 3rem 0;
+      text-align: center;
+    }
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin: 2rem 0;
+    }
+    .social-links a {
+      color: var(--terminal-text);
+      font-size: 1.5rem;
+      transition: color 0.3s;
+    }
+    .social-links a:hover {
+      color: var(--matrix-green);
+    }
+    .glitch {
+      position: relative;
+    }
+    .glitch:before, .glitch:after {
+      content: attr(data-text);
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+    .glitch:before {
+      color: var(--accent-purple);
+      animation: glitch-effect 3s infinite;
+    }
+    .glitch:after {
+      color: var(--accent-blue);
+      animation: glitch-effect 2s infinite reverse;
+    }
+    @keyframes glitch-effect {
+      0% { transform: translate(0) }
+      20% { transform: translate(-3px, 3px) }
+      40% { transform: translate(-3px, -3px) }
+      60% { transform: translate(3px, 3px) }
+      80% { transform: translate(3px, -3px) }
+      100% { transform: translate(0) }
+    }
+    @media (max-width: 768px) {
+      .about-content {
+        grid-template-columns: 1fr;
+      }
+      nav ul {
+        gap: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <canvas id="matrix" class="matrix-bg"></canvas>
+  
+  <div class="container">
+    <header>
+      <div class="logo">LunarLumos</div>
+      <nav>
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <div class="typing">$ whoami</div>
+      <div class="typing">Aifee Aadil (Lunar Lumos)</div>
+      <div class="typing">Security Engineer | AI & Cybersecurity Researcher</div>
+      <button class="btn" onclick="window.location.href='#contact'">Connect With Me</button>
+    </section>
+
+    <section id="about">
+      <h2 class="glitch" data-text="About_Me">About_Me</h2>
+      <div class="about-content">
+        <div>
+          <img src="https://via.placeholder.com/400x500/0a0a0a/0aff0a?text=AI" alt="Aifee Aadil" class="profile-img">
+        </div>
+        <div>
+          <p>I'm Aifee Aadil, a Security Engineer passionate about network security and AI. My journey began with a fascination for how systems work and a desire to enhance security.</p>
+          <br>
+          <p>As COO at Fhixa, I lead the security testing team, overseeing vulnerability assessments and guiding security implementations. Previously as a Bug Hunter at HackerOne, I identified high-severity vulnerabilities in web applications.</p>
+          <br>
+          <p>I specialize in Perl, Python, and Bash scripting to create security tools like SpecterScan (SQLi scanner) and NetWarn (network security scanner). My work focuses on bridging security and AI to create innovative solutions.</p>
+          <br>
+          <button class="btn" onclick="window.open('resume.pdf')">Download Resume</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <h2 class="glitch" data-text="Tech_Stack">Tech_Stack</h2>
+      <div class="skills-grid">
+        <div class="skill-card">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/perl/perl-original.svg" alt="Perl">
+          <h3>Perl</h3>
+        </div>
+        <div class="skill-card">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bash/bash-original.svg" alt="Bash">
+          <h3>Bash</h3>
+        </div>
+        <div class="skill-card">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python">
+          <h3>Python</h3>
+        </div>
+        <div class="skill-card">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg" alt="C">
+          <h3>C</h3>
+        </div>
+        <div class="skill-card">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg" alt="Linux">
+          <h3>Linux</h3>
+        </div>
+        <div class="skill-card">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="Docker">
+          <h3>Docker</h3>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <h2 class="glitch" data-text="Projects">Projects</h2>
+      <div class="projects-grid">
+        <div class="project-card">
+          <img src="https://via.placeholder.com/600x400/0a0a0a/0aff0a?text=SpecterScan" alt="SpecterScan" class="project-img">
+          <div class="project-info">
+            <h3>SpecterScan</h3>
+            <p>Perl-based SQL Injection vulnerability scanner that tests URLs with various payloads to ensure web application security.</p>
+            <div class="project-links">
+              <a href="https://github.com/LunarLumos/SpecterScan" target="_blank">Code</a>
+            </div>
+          </div>
+        </div>
+        <div class="project-card">
+          <img src="https://via.placeholder.com/600x400/0a0a0a/0aff0a?text=NetWarn" alt="NetWarn" class="project-img">
+          <div class="project-info">
+            <h3>NetWarn</h3>
+            <p>Network security scanning tool that checks server ports and sends real-time alerts via Telegram.</p>
+            <div class="project-links">
+              <a href="https://github.com/LunarLumos/NetWarn" target="_blank">Code</a>
+            </div>
+          </div>
+        </div>
+        <div class="project-card">
+          <img src="https://via.placeholder.com/600x400/0a0a0a/0aff0a?text=Yametti" alt="Yametti" class="project-img">
+          <div class="project-info">
+            <h3>Yametti</h3>
+            <p>Subdomain enumeration tool combining passive and active discovery techniques to uncover hidden subdomains.</p>
+            <div class="project-links">
+              <a href="https://github.com/LunarLumos/Yametti" target="_blank">Code</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2 class="glitch" data-text="Get_In_Touch">Get_In_Touch</h2>
+      <p>Interested in collaborating or discussing security research? Feel free to reach out!</p>
+      <div class="social-links">
+        <a href="https://github.com/LunarLumos" target="_blank">GitHub</a>
+        <a href="https://twitter.com/LunarLumos" target="_blank">Twitter</a>
+        <a href="mailto:aifee@example.com">Email</a>
+        <a href="https://linkedin.com/in/aifee" target="_blank">LinkedIn</a>
+      </div>
+    </section>
+
+    <footer>
+      <p>© 2024 Aifee Aadil (Lunar Lumos). All systems secure.</p>
+    </footer>
+  </div>
+
+  <script>
+    // Matrix background effect
+    const canvas = document.getElementById('matrix');
+    const ctx = canvas.getContext('2d');
+    
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    
+    const chars = "01";
+    const fontSize = 14;
+    const columns = canvas.width / fontSize;
+    
+    const drops = [];
+    for(let i = 0; i < columns; i++) {
+      drops[i] = 1;
+    }
+    
+    function draw() {
+      ctx.fillStyle = 'rgba(10, 10, 10, 0.05)';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      
+      ctx.fillStyle = '#0aff0a';
+      ctx.font = fontSize + 'px monospace';
+      
+      for(let i = 0; i < drops.length; i++) {
+        const text = chars.charAt(Math.floor(Math.random() * chars.length));
+        ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+        
+        if(drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+          drops[i] = 0;
+        }
+        
+        drops[i]++;
+      }
+    }
+    
+    setInterval(draw, 33);
+    
+    window.addEventListener('resize', () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    });
+  </script>
+</body>
+</html>
