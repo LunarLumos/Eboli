@@ -1,16 +1,6 @@
-
-# 🌐 Eboli AI Security Proxy  
-### Industrial IoT (IIoT) Cyber Defense System  
-*Developed by Lunar Labs* 🚀🔒
-
----
-
-<div align="center">
-  <img src="https://i.imgur.com/J3EmW6G.png" alt="Eboli Architecture" width="400" />
-  <p><i>AI-powered network traffic analysis & threat mitigation proxy for IIoT environments</i></p>
-</div>
-
----
+# 🌐 Eboli : Heart of Aifeee
+## Industrial IoT (IIoT) Cyber Defense System  
+*Under Development!* 🔒
 
 ## 🌟 Project Overview
 
@@ -225,7 +215,6 @@ Licensed under **MIT License**. See LICENSE file for details.
 ---
 
 <div align="center">  
-  <img src="https://i.imgur.com/m5Q0xHd.png" width="150" />  
   <p><i>Made with passion by Lunar Labs 🚀</i></p>  
 </div>
-```
+
