@@ -25,7 +25,7 @@
 ### 🛠️ How Eboli Works: System Workflow
 
 <div align="center">
-  <img src="https://i.imgur.com/YC2zMib.png" alt="Eboli Working Mechanism" width="600" />
+  <img src="https://raw.githubusercontent.com/LunarLumos/Eboli/refs/heads/main/data/workflow.png" alt="Eboli Working Mechanism" width="150" hight="50" />
   <p><i>Flow of network traffic through Eboli AI Security Proxy</i></p>
 </div>
 
